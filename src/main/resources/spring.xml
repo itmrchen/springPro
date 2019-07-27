@@ -4,4 +4,10 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="javazxwBean" class="com.javazx.po.JavazxwBean"/>
+
+    <bean id="javazxwBean2" class="com.javazx.beanfactory.JavazxwBeanFactory" factory-method="getJavazxwBean2"/>
+
+    <bean id="javazxwBean3Factory" class="com.javazx.beanfactory.JavazxwBean3Factory"/>
+    <bean id="javazxwBean3" class="com.javazx.po.JavazxwBean3" factory-bean="javazxwBean3Factory" factory-method="getJavazxwBean3"/>
+
 </beans>
