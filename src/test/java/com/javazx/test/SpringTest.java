@@ -1,5 +1,6 @@
 package com.javazx.test;
 
+import com.javazx.po.Bean;
 import com.javazx.po.JavazxwBean;
 import com.javazx.po.JavazxwBean2;
 import com.javazx.po.JavazxwBean3;
@@ -33,5 +34,22 @@ public class SpringTest {
          */
         JavazxwBean3 bean3 = ctx.getBean("javazxwBean3", JavazxwBean3.class);
         System.out.println(bean3);
+
+        /**
+         * 通过构造方法、set方法 注入bean
+         */
+        Bean bean4 = ctx.getBean("bean", Bean.class);
+        System.out.println(bean4);
+
+        Bean bean5 = ctx.getBean("bean", Bean.class);
+        System.out.println(bean5.getStringList());
+        System.out.println(bean5.getStringMap());
+        System.out.println(bean5.getStringSet());
+        System.out.println(bean5.getRoperties());
+        System.out.println(bean5.getAnotherBeanList());
+        System.out.println(bean5.getAnotherBeanMap());
+        System.out.println(bean5.getAnotherBeanSet());
+
+
     }
 }

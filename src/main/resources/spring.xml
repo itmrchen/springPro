@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:p="http://www.springframework.org/schema/p"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="javazxwBean" class="com.javazx.po.JavazxwBean"/>
@@ -8,6 +10,69 @@
     <bean id="javazxwBean2" class="com.javazx.beanfactory.JavazxwBeanFactory" factory-method="getJavazxwBean2"/>
 
     <bean id="javazxwBean3Factory" class="com.javazx.beanfactory.JavazxwBean3Factory"/>
-    <bean id="javazxwBean3" class="com.javazx.po.JavazxwBean3" factory-bean="javazxwBean3Factory" factory-method="getJavazxwBean3"/>
+    <bean id="javazxwBean3" class="com.javazx.po.JavazxwBean3" factory-bean="javazxwBean3Factory"
+          factory-method="getJavazxwBean3"/>
+
+    <bean id="anotherBean" class="com.javazx.po.AnotherBean"/>
+
+    <!-- 简单写法 -->
+    <!--<bean id="bean" class="com.javazx.po.Bean" c:anotherBean-ref="anotherBean" c:string="cccc"
+          p:anotherBean1-ref="anotherBean" p:string1="pppp">
+    </bean>-->
+
+    <!-- name="anotherBean" type="com.javazx.po.AnotherBean"  name="string" type="java.lang.String" 可以省略 -->
+    <bean id="bean" class="com.javazx.po.Bean">
+        <constructor-arg index="0" ref="anotherBean"/>
+        <constructor-arg index="1" value="javazx"/>
+        <property name="anotherBean1">
+            <bean class="com.javazx.po.AnotherBean"/>
+        </property>
+        <property name="string1" value="bbb"/>
+        <property name="stringList">
+            <list>
+                <value>aaaaa</value>
+                <value>bbbbb</value>
+            </list>
+        </property>
+        <property name="anotherBeanList">
+            <list>
+                <ref bean="anotherBean"/>
+                <ref bean="anotherBean"/>
+            </list>
+        </property>
+
+        <property name="stringSet">
+            <set>
+                <value>aaaaa</value>
+                <value>bbbbb</value>
+            </set>
+        </property>
+        <property name="anotherBeanSet">
+            <set>
+                <ref bean="anotherBean"/>
+                <ref bean="anotherBean"/>
+            </set>
+        </property>
+
+        <property name="stringMap">
+            <map>
+                <entry key="ccccc" value="ccccc"/>
+                <entry key="dddddd" value="ddddd"/>
+            </map>
+        </property>
+
+        <property name="anotherBeanMap">
+            <map>
+                <entry key-ref="anotherBean" value-ref="anotherBean"/>
+            </map>
+        </property>
+
+        <property name="roperties">
+            <props>
+                <prop key="aaaaa">bbbbb</prop>
+            </props>
+        </property>
+
+    </bean>
 
 </beans>
