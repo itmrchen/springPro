@@ -24,6 +24,9 @@ public class Bean2 implements InitializingBean, DisposableBean {
         System.out.println("Bean2.afterPropertiesSet");
     }
 
+    /**
+     * bean初始化顺序 Constructor >> @Autowired >> @PostConstruct @PostConstruct
+     */
     @PostConstruct
     public void onInit(){
         System.out.println("Bean2.onInit");
