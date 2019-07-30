@@ -1,9 +1,6 @@
 package com.javazx.test;
 
-import com.javazx.po.Bean;
-import com.javazx.po.JavazxwBean;
-import com.javazx.po.JavazxwBean2;
-import com.javazx.po.JavazxwBean3;
+import com.javazx.po.*;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -50,6 +47,32 @@ public class SpringTest {
         System.out.println(bean5.getAnotherBeanMap());
         System.out.println(bean5.getAnotherBeanSet());
 
+        /**
+         * 方法注入
+         */
+        Bean2 b2 = ctx.getBean("bean2", Bean2.class);
+        b2.getBean3();
+        Bean2 b21 = ctx.getBean("bean2", Bean2.class);
+        b21.getBean3();
+        System.out.println(b2 == b21);
+
+        /**
+         * 自定义作用域双例bena
+         */
+        final ApplicationContext ctxScope = new ClassPathXmlApplicationContext("spring.xml");
+        for (int i = 0; i < 10; i++) {
+            Bean3 bean33 = ctxScope.getBean("bean3", Bean3.class);
+            System.out.println("bean3 = " + bean33);
+        }
+        System.out.println("----------------------- 分隔符 ---------------------");
+        for (int i = 0; i < 10; i++) {
+            new Thread(new Runnable() {
+                public void run() {
+                    Bean3 bean33 = ctxScope.getBean("bean3", Bean3.class);
+                    System.out.println("bean3 = " + bean33);
+                }
+            }).start();
+        }
 
     }
 }

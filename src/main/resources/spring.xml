@@ -74,5 +74,25 @@
         </property>
 
     </bean>
+    <!-- 方法注入 -->
+    <!--<bean id="bean3" class="com.javazx.po.Bean3" scope="prototype"/>-->
+    <bean id="bean2" class="com.javazx.po.Bean2" scope="singleton">
+        <lookup-method name="createBean3" bean="bean3"/>
+    </bean>
+    <bean class="com.javazx.controller.RequestController" scope="request"/>
 
+    <!-- 自定义作用域 -->
+    <bean id="myScope" class="com.javazx.po.MyScope"/>
+    <bean id="simpleThreadScope" class="org.springframework.context.support.SimpleThreadScope"/>
+    <bean class="org.springframework.beans.factory.config.CustomScopeConfigurer">
+        <property name="scopes">
+            <map>
+                <entry key="myScope" value-ref="myScope"/>
+                <!-- spring自定义的作用域 不同线程创建新实例-->
+                <entry key="simpleThreadScope" value-ref="simpleThreadScope"/>
+            </map>
+        </property>
+    </bean>
+    <!--<bean id="bean3" class="com.javazx.po.Bean3" scope="myScope"/>-->
+    <bean id="bean3" class="com.javazx.po.Bean3" scope="simpleThreadScope"/>
 </beans>
