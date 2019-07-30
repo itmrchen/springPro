@@ -95,4 +95,8 @@
     </bean>
     <!--<bean id="bean3" class="com.javazx.po.Bean3" scope="myScope"/>-->
     <bean id="bean3" class="com.javazx.po.Bean3" scope="simpleThreadScope"/>
+    <!-- bean懒加载 beans中整体添加default-lazy-init="true"将全部进行懒加载-->
+    <!--<bean id="lazyBean" class="com.javazx.po.lazyload.LazyBean" lazy-init="true"/>-->
+    <!-- bean初始化、销毁-->
+    <bean id="lazyBean" class="com.javazx.po.lazyload.LazyBean" init-method="onInit" destroy-method="onDestroy"/>
 </beans>

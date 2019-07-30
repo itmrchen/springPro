@@ -1,8 +1,10 @@
 package com.javazx.test;
 
 import com.javazx.po.*;
+import com.javazx.po.lazyload.LazyBean;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
@@ -73,6 +75,20 @@ public class SpringTest {
                 }
             }).start();
         }
+
+        /**
+         * 自定义作用域双例bena
+         */
+        /*System.out.println("ApplicationContext加载完毕！");
+        ctx.getBean("lazyBean",LazyBean.class);*/
+
+        /**
+         * bean初始化与销毁
+         */
+        AbstractApplicationContext ctxDestroy = new ClassPathXmlApplicationContext("spring.xml");
+        System.out.println("ApplicationContext加载完毕！");
+        ctxDestroy.getBean("lazyBean",LazyBean.class);
+        ctxDestroy.close();
 
     }
 }
