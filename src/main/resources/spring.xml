@@ -80,6 +80,8 @@
         <lookup-method name="createBean3" bean="bean3"/>
     </bean>
     <bean class="com.javazx.controller.RequestController" scope="request"/>
+    <bean class="com.javazx.controller.SessionController" scope="session"/>
+    <bean class="com.javazx.controller.ApplicationController" scope="application"/>
 
     <!-- 自定义作用域 -->
     <bean id="myScope" class="com.javazx.po.MyScope"/>
