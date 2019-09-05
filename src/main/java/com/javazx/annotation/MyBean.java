@@ -3,6 +3,7 @@ package com.javazx.annotation;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -13,9 +14,11 @@ import java.util.List;
  */
 @Data
 @Component
+@Lazy
 public class MyBean {
     private AnotherBean anotherBean1;
     private AnotherBean anotherBean2;
+
 
     /**
      * 属性注入

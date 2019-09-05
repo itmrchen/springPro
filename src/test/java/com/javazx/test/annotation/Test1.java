@@ -16,11 +16,11 @@ public class Test1 {
     @Test
     public void test() {
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext(MyConfiguration.class);
-        Bean bean = applicationContext.getBean("bean", Bean.class);
-        System.out.println(bean);
+        //Bean bean = applicationContext.getBean("bean", Bean.class);
+        //System.out.println(bean);
 
         //构造方法完成属性值的注入
-        MyBean myBean = applicationContext.getBean("myBean", MyBean.class);
-        System.out.println("myBean:" + myBean);
+        /*MyBean myBean = applicationContext.getBean("myBean", MyBean.class);
+        System.out.println("myBean:" + myBean);*/
     }
 }

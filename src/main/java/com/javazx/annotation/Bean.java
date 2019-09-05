@@ -1,6 +1,7 @@
 package com.javazx.annotation;
 
 
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 /**
@@ -8,5 +9,9 @@ import org.springframework.stereotype.Component;
  * @date 2019/9/5 0:42
  */
 @Component
+@Lazy
 public class Bean {
+    public Bean() {
+        System.out.println("bean init ");
+    }
 }
